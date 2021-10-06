@@ -1,0 +1,4 @@
+*.png
+*.gif
+docker-compose*
+Dockerfile

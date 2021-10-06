@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  pythontesseractalpine:
+    image: pythontesseractalpine
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    volumes:
+      # - /Users/mawan/Development/docker-f/python-tesseract-alpine/public-html/images:/home/public-html/images
+      - data:/home/web-images
+
+  web:
+    image: httpdalpine
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - data:/usr/local/apache2/htdocs/images
+    ports:
+      - 80:80
+    depends_on:
+      - pythontesseractalpine
+
+volumes:
+  data:
