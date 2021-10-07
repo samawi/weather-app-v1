@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   pythontesseractalpine:
-    image: pythontesseractalpine
+    image: samawi/python-weather-app-1
     build:
       context: backend
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
       - data:/home/web-images
 
   web:
-    image: httpdalpine
+    image: samawi/web-weather-app-1
     build:
       context: frontend
       dockerfile: Dockerfile
