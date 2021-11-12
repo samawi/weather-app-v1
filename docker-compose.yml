@@ -6,6 +6,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
+    restart: unless-stopped
     volumes:
       # - /Users/mawan/Development/docker-f/python-tesseract-alpine/public-html/images:/home/public-html/images
       - data:/home/web-images
@@ -15,6 +16,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    restart: unless-stopped
     volumes:
       - data:/usr/local/apache2/htdocs/images
     ports:
