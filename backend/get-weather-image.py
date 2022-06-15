@@ -18,6 +18,7 @@ def download():
 
     #image_url = "https://dataweb.bmkg.go.id/MEWS/Radar/TANG_SingleLayerCRefQC.png"
     image_url = "https://inderaja.bmkg.go.id/Radar/TANG_SingleLayerCRefQC.png"
+    #image_url = "https://inderaja.bmkg.go.id/Radar/BIMA_SingleLayerCRefQC.png?id=97834y5ujt2k43kaf8cucvc"
     filename = image_url.split("/")[-1]
 
     r = requests.get(image_url, stream = True)
