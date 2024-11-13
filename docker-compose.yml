@@ -10,8 +10,10 @@ services:
     volumes:
       # - /Users/mawan/Development/docker-f/python-tesseract-alpine/public-html/images:/home/public-html/images
       # - data:/home/web-images
-      - /home/ubuntu/weather-app-v1/temp-images:/home/temp-images
-      - /home/ubuntu/weather-app-v1/web-images:/home/web-images
+      # - /home/ubuntu/weather-app-v1/temp-images:/home/temp-images
+      # - /home/ubuntu/weather-app-v1/web-images:/home/web-images
+      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/temp-images:/home/temp-images
+      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/web-images:/home/web-images
 
   web:
     image: samawi/web-weather-app-1
@@ -21,7 +23,8 @@ services:
     restart: unless-stopped
     volumes:
       # - data:/usr/local/apache2/htdocs/images
-      - /home/ubuntu/weather-app-v1/web-images:/usr/local/apache2/htdocs/images
+      # - /home/ubuntu/weather-app-v1/web-images:/usr/local/apache2/htdocs/images
+      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/web-images:/usr/local/apache2/htdocs/images
     ports:
       - 80:80
     depends_on:
