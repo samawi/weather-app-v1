@@ -1,11 +1,14 @@
-FROM alpine:3.13
+FROM python
 
-RUN apk update
-RUN apk add tesseract-ocr
-RUN apk add python3
-RUN apk add py3-pip
-RUN apk add py3-pillow
+# RUN apk update
+RUN apt-get update
+RUN apt-get install -y tesseract-ocr
+# RUN apk add python3
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-pillow
 RUN pip install pytesseract
+RUN pip install requests
 
 WORKDIR /home
 

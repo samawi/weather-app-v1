@@ -8,27 +8,38 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
-      # - /Users/mawan/Development/docker-f/python-tesseract-alpine/public-html/images:/home/public-html/images
-      # - data:/home/web-images
-      # - /home/ubuntu/weather-app-v1/temp-images:/home/temp-images
-      # - /home/ubuntu/weather-app-v1/web-images:/home/web-images
-      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/temp-images:/home/temp-images
-      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/web-images:/home/web-images
+      - temp-images:/home/temp-images
+      - web-images:/home/web-images
 
-  web:
-    image: samawi/web-weather-app-1
+  fastapi:
+    image: samawi/fastapi-weather-app-1
     build:
-      context: frontend
+      context: fastapi
       dockerfile: Dockerfile
-    restart: unless-stopped
-    volumes:
-      # - data:/usr/local/apache2/htdocs/images
-      # - /home/ubuntu/weather-app-v1/web-images:/usr/local/apache2/htdocs/images
-      - /Users/mawan/Development-local-imac/weather-app-v1/frontend/public-html/web-images:/usr/local/apache2/htdocs/images
-    ports:
-      - 80:80
+    # ports:
+    #   - "8080:8080"
     depends_on:
       - pythontesseractalpine
+    volumes:
+      - temp-images:/app/temp-images
+      - web-images:/app/web-images
+
+  react-app:
+    image: samawi/react-weather-app
+    build:
+      context: ./reactjs
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - fastapi
+    environment:
+      - REACT_APP_API_URL=http://fastapi:8080
+    volumes:
+      - ./reactjs:/app
+      - /app/node_modules
+    restart: unless-stopped
 
 volumes:
-  data:
+  web-images:
+  temp-images:
