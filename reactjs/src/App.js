@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FaCloud } from 'react-icons/fa';
 import { fetchWeatherImage } from './services/api';
 
 function App() {
@@ -27,19 +26,21 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow">
+    <div className="min-h-screen bg-slate-800">
+      <header className="bg-slate-800">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            Weather Satellite Image
-            <FaCloud className="ml-2 text-blue-500" />
+          <h1 className="text-3xl font-bold text-white flex items-center">
+            Jakarta Rain Radar
           </h1>
+          <p className="text-white">The image below shows the last 2 hours of rain in Jakarta region.
+
+          </p>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg p-4">
+          <div className="border-2 border-gray-200 rounded-lg p-4">
             {loading ? (
               <div className="flex justify-center items-center h-96">
                 <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
