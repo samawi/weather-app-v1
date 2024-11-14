@@ -14,6 +14,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost",
         "http://localhost:80",
+        "https://pilot.samadikun.net",
         "http://react-app",
         "http://fastapi:8080",
     ],

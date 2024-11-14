@@ -2,3 +2,5 @@
 *.png
 *.gif
 web-images/weather_animation.gif
+ssl/
+*.pem

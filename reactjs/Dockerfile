@@ -21,11 +21,12 @@ FROM nginx:alpine
 # Copy built assets from build stage
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy SSL nginx configuration
+COPY nginx-ssl.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
-EXPOSE 80
+# Create SSL directory
+RUN mkdir -p /etc/nginx/ssl
 
-# Start nginx
+EXPOSE 80 443
+
 CMD ["nginx", "-g", "daemon off;"] 

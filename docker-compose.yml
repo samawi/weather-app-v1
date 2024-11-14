@@ -31,6 +31,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - fastapi
     environment:
@@ -38,6 +39,7 @@ services:
     volumes:
       - ./reactjs:/app
       - /app/node_modules
+      - ./ssl:/etc/nginx/ssl
     restart: unless-stopped
 
 volumes:
