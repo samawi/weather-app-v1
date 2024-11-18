@@ -40,17 +40,17 @@ function App() {
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
-          <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="p-4 aspect-square h-auto max-h-[calc(100vh-200px)] w-auto mx-auto">
             {loading ? (
-              <div className="flex justify-center items-center h-96">
+              <div className="flex justify-center items-center h-full">
                 <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
               </div>
             ) : (
-              <div className="relative">
+              <div className="relative h-full">
                 <img
                   src={imageSrc ? `data:image/gif;base64,${imageSrc}` : ''}
                   alt="Weather satellite"
-                  className="w-full rounded-lg shadow-lg"
+                  className="rounded-lg shadow-lg max-h-full w-auto object-contain"
                   onLoad={() => setLoading(false)}
                   onError={(e) => {
                     console.error('Image loading error:', e);
